@@ -7,6 +7,10 @@
 	text-align: center;
 }
 
+a {
+	color: var("--text-3");
+}
+
 .logo {
 	height: 6em;
 	padding: 1.5em;
