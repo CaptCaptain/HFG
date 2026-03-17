@@ -8,7 +8,11 @@
 }
 
 a {
-	color: var("--text-3");
+	color: var(--text-3);
+}
+
+a:hover {
+	color: var(--text);
 }
 
 .logo {
