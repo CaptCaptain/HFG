@@ -1,4 +1,4 @@
-# CISC 3140 Group Project
+# Have Fun Games
 
 ## Requirements
 
