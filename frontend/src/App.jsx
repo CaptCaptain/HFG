@@ -5,9 +5,13 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GamePage from "./pages/GamePage";
 import ErrorPage from "./pages/ErrorPage";
+import ConfirmationPage from "./pages/Confirmation";
 import AuthProvider, { AuthContext } from "./auth/AuthContext";
 import CartProvider, { CartContext } from "./cart/CartContext";
 import CartPage from "./cart/CartPage";
+import Checkout from "./cart/Checkout";
+import OrdersPage from "./cart/Orders";
+import LibraryPage from "./cart/Library";
 import "./App.css";
 
 function Header() {
@@ -39,6 +43,8 @@ function Header() {
 
         {user ? (
           <>
+            <Link to="/library" className="header-nav-link">Library</Link>
+            <Link to="/orders" className="header-nav-link">Orders</Link>
             <span className="header-nav-link">{user.email}</span>
             <button className="header-nav-cta" onClick={handleLogout}>
               Log Out
@@ -73,6 +79,10 @@ export default function App() {
             <Route path="/game" element={<GamePage />} />
             <Route path="/game/:id" element={<GamePage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/orders" element={<OrdersPage />} />
+            <Route path="/library" element={<LibraryPage />} />
+            <Route path="/confirmation" element={<ConfirmationPage />} />
             <Route path="/*" element={<ErrorPage message="Page does not exist" />} />
           </Routes>
         </CartProvider>

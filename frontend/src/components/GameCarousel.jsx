@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useContext } from "react";
+import { CartContext } from "../cart/CartContext";
 import "./GameCarousel.css";
 
 const INTERVAL = 5000; // ms per slide
 
 function GameCarousel({ slides = [] }) {
+	const { addToCart } = useContext(CartContext);
 	const [current, setCurrent] = useState(0);
 	const [progress, setProgress] = useState(0);
 	const startRef = useRef(null);
@@ -128,7 +130,10 @@ function GameCarousel({ slides = [] }) {
 									}).format(slide.price)
 								: "Free to Play"}
 						</div>
-						<button className="sc-buy-btn">Add to Cart</button>
+						<button
+							className="sc-buy-btn"
+							onClick={() => addToCart({ name: slide.title, price: slide.price, image: slide.img, url: slide.url })}
+						>Add to Cart</button>
 					</div>
 				</div>
 			</div>
