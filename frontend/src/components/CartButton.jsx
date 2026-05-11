@@ -1,17 +1,21 @@
 // Can be used on any page to add an item to the cart.
+import { useContext } from "react";
+import { CartContext } from "../cart/CartContext";
 
-export default function CartButton({ text, game_id }) {
+export default function CartButton({ text, game }) {
 	// Default text if not specified
 	if (!text) text = "Add to Cart";
 
-	const addToCart = () => {
-		// TODO: Link to API and check if game exists
-		if (!game_id) return;
+	const { addToCart } = useContext(CartContext);
+
+	const handleClick = () => {
+		if (!game) return;
+		addToCart(game);
 	};
 
 	return (
 		<>
-			<button onClick={addToCart}>{text}</button>
+			<button onClick={handleClick}>{text}</button>
 		</>
 	);
 }

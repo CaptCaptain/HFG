@@ -88,7 +88,12 @@ export default function GamePage() {
 											marginTop: "50px",
 										}}
 									>
-										<CartButton />
+										<CartButton game={{
+										name: gameData.title,
+										price: parseFloat(gamePrice),
+										image: gameData.cover_image_url,
+										url: `/game/${params.id}`,
+									}} />
 									</div>
 									<div
 										style={{

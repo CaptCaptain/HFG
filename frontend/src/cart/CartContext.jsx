@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { supabase } from "../lib/supabase";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const CartContext = createContext();
@@ -51,6 +52,21 @@ const CartProvider = ({ children }) => {
     setLibrary(nextLibrary);
     persist(STORAGE_KEYS.library, nextLibrary);
   };
+
+  // Clear cart, orders, and library when the user signs out
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_OUT") {
+        setCart([]);
+        setOrders([]);
+        setLibrary([]);
+        localStorage.removeItem(STORAGE_KEYS.cart);
+        localStorage.removeItem(STORAGE_KEYS.orders);
+        localStorage.removeItem(STORAGE_KEYS.library);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   const addToCart = (product) => {
     const existing = cart.find((item) => item.name === product.name);

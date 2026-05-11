@@ -1,6 +1,6 @@
 # Have Fun Games
 
-A full-stack digital game store where users can browse games, manage a shopping cart, and complete purchases via Stripe Checkout. Built as a group project for CISC 3140.
+S
 
 ---
 
