@@ -1,9 +1,5 @@
 # Have Fun Games
 
-S
-
----
-
 ## Tech Stack
 
 ### Frontend
